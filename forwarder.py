@@ -17,6 +17,7 @@ client = TelegramClient('anon2', api_id, api_hash)
 
 @client.on(events.NewMessage(chats=TARGET_CHANNELS))
 async def handler(event):
+    channel = await client.get_entity(-1003731587014)
     await client.forward_messages(channel, event.message)
 
 async def main():
