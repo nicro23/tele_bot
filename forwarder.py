@@ -2,9 +2,8 @@ import asyncio
 from telethon import TelegramClient, events
 import os
 
-api_id = int(os.getenv("API_ID"))
-api_hash = os.getenv("API_HASH")
-TARGET_CHANNELS = [
+api_id = 35159329
+api_hash = '3b4f3d55299cbbb398c8f7254782d7b3'
     -1001310984791,
     -1002036270701,
     -1001134494888,
