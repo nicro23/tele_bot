@@ -4,6 +4,7 @@ import os
 
 api_id = 35159329
 api_hash = '3b4f3d55299cbbb398c8f7254782d7b3'
+TARGET_CHANNELS = [
     -1001310984791,
     -1002036270701,
     -1001134494888,
