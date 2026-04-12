@@ -22,6 +22,7 @@ async def handler(event):
 async def main():
     await client.start()
     channel = await client.get_entity(-1003731587014)
+    await client.send_message(channel, "Bot is running...")
     print("Bot is running...")
     await client.run_until_disconnected()
 
