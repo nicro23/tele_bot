@@ -13,7 +13,7 @@ TARGET_CHANNELS = [
 # source_channel = os.getenv("SOURCE_CHANNEL")
 # target_channel = os.getenv("TARGET_CHANNEL")
 
-client = TelegramClient('session', api_id, api_hash)
+client = TelegramClient('anon2', api_id, api_hash)
 
 @client.on(events.NewMessage(chats=TARGET_CHANNELS))
 async def handler(event):
