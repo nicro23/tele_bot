@@ -18,7 +18,8 @@ TARGET_CHANNELS = [
 ]
 @client.on(events.NewMessage(chats=TARGET_CHANNELS))
 async def my_event_handler(event):
-      await client.send_message(channel, event.raw_text)
+      # await client.send_message(channel, event.raw_text)
+      await client.forward_messages(target_channel, event.message)
 
 async def fun():
   channel = await client.get_entity(-1003731587014)
