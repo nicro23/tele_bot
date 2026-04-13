@@ -1,9 +1,13 @@
 import asyncio
 from telethon import TelegramClient, events
+from telethon.sessions import StringSession
 import os
+import time
+
 
 api_id = 35159329
 api_hash = '3b4f3d55299cbbb398c8f7254782d7b3'
+session_string = "1BJWap1wBuy7Iob2bc0i0H_uqjM8w6pXz3t7oSJYHkNVWOj39A33K0C9FS3og39rXhFSSn8EYlHENzz6iKmSk74xHvrWxLxW7xVcjbWOhaTpKROkU6XcVCQS1O5GB1hszxs3VpTud1V9k_cSGdQQWC1xx5qqoOaO5W1y-AfaXYRi5nXh-vd2_aCEkIwYQ9tdvGoXKxyVxJR8BnDsyy8KyOdIawA3Vpc0d20yCFrAYgLkmQn8ux_fNChMVmHB060Iec5oXYRxfQMHYP5Qnln05NCyhAR6ust4kYReIrpH9d12-l_hzsfNBmMNwoZ__ZcBWLVhH1lPgylkjBaQKwvPBKskNZZ_Lsg4="
 TARGET_CHANNELS = [
     -1001310984791,
     -1002036270701,
@@ -12,8 +16,8 @@ TARGET_CHANNELS = [
 ]
 # source_channel = os.getenv("SOURCE_CHANNEL")
 # target_channel = os.getenv("TARGET_CHANNEL")
-
-client = TelegramClient('anon2', api_id, api_hash)
+time.sleep(30)
+client = TelegramClient(StringSession(session_string), api_id, api_hash)
 
 @client.on(events.NewMessage(chats=TARGET_CHANNELS))
 async def handler(event):
