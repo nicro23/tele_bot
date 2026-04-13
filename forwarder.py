@@ -3,6 +3,13 @@ from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import os
 import time
+from deep_translator import GoogleTranslator
+import signal
+import sys
+
+def translate_text(text, target="en"):
+    return GoogleTranslator(source='auto', target=target).translate(text)
+
 
 
 api_id = 35159329
@@ -18,6 +25,18 @@ TARGET_CHANNELS = [
 # target_channel = os.getenv("TARGET_CHANNEL")
 time.sleep(30)
 client = TelegramClient(StringSession(session_string), api_id, api_hash)
+
+
+def shutdown_handler(signum, frame):
+    print("Shutting down...")
+    try:
+        client.disconnect()
+    except:
+        pass
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_handler)
+signal.signal(signal.SIGINT, shutdown_handler)
 
 @client.on(events.NewMessage(chats=TARGET_CHANNELS))
 async def handler(event):
