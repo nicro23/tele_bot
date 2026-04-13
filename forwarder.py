@@ -14,7 +14,8 @@ def translate_text(text, target="en"):
 
 api_id = 35159329
 api_hash = '3b4f3d55299cbbb398c8f7254782d7b3'
-session_string = "1BJWap1wBuy7Iob2bc0i0H_uqjM8w6pXz3t7oSJYHkNVWOj39A33K0C9FS3og39rXhFSSn8EYlHENzz6iKmSk74xHvrWxLxW7xVcjbWOhaTpKROkU6XcVCQS1O5GB1hszxs3VpTud1V9k_cSGdQQWC1xx5qqoOaO5W1y-AfaXYRi5nXh-vd2_aCEkIwYQ9tdvGoXKxyVxJR8BnDsyy8KyOdIawA3Vpc0d20yCFrAYgLkmQn8ux_fNChMVmHB060Iec5oXYRxfQMHYP5Qnln05NCyhAR6ust4kYReIrpH9d12-l_hzsfNBmMNwoZ__ZcBWLVhH1lPgylkjBaQKwvPBKskNZZ_Lsg4="
+session_string = "1BJWap1wBu5WedHJZzGOgekV0K16emgiJMf_BRwFGWtgb2-7Z7yL_djzQPMsS2M-KEjr2k1PtEHFgvU9xtr7qg8wiQNbbojYiOAZobptQnDhgnFou_4pH8bc437IcOvApvLPxN2EINzZMTWSDVyTdTDA3jkczMBrCA8ocDIljEYuc07fk2KOdk_gvyLOWCpB3qK7ziUgD0-OSs3semPKIFkGp7K6QNujpkaOrm0iC4XX4o5p02-4gVwusTvS9Ny9B0crUb4pcpnZZ0mIStD6pVaueRyq9pIb5GukqtD2TV9mWUjDrM6dU6ythYgYZgIFY48Tx6Bghio7Y5FUGXXRWG3AVEFK3flU="
+
 TARGET_CHANNELS = [
     -1001310984791,
     -1002036270701,
@@ -42,6 +43,9 @@ signal.signal(signal.SIGINT, shutdown_handler)
 async def handler(event):
     channel = await client.get_entity(-1003731587014)
     await client.forward_messages(channel, event.message)
+    tran_msg = GoogleTranslator(source='english', target='arabic').translate(event.message.text)
+    await client.send_messages(channel, trans_msg)
+     
 
 async def main():
     await client.start()
