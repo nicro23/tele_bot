@@ -44,7 +44,7 @@ async def handler(event):
     channel = await client.get_entity(-1003731587014)
     await client.forward_messages(channel, event.message)
     tran_msg = GoogleTranslator(source='english', target='arabic').translate(event.message.text)
-    await client.send_messages(channel, tran_msg)
+    await client.send_message(channel, tran_msg)
      
 
 async def main():
